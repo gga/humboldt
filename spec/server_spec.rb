@@ -38,13 +38,13 @@ end
 describe 'humboldt server stop' do
   
   before(:each) do
-        @it = Humboldt::Server.new
-        @it.start!
-      end
-      
-      it "should operate on demand" do
-        @it.stop!
-        @it.should_not be_running
-      end
+    @it = Humboldt::Server.new
+    @it.start!
+  end
+  
+  it "should operate on demand" do
+    @it.stop!
+    @it.should_not be_running
+  end
 
 end
