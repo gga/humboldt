@@ -11,15 +11,22 @@ module Humboldt
     end
     
     def url
-      "druby://#{`hostname`.chomp}:#{@port}"
+      "druby://localhost:#{@port}"
     end
     
     def start!
-      @blackboard = Rinda::TupleSpace.new
-      DRb.start_service(url, @blackboard)
-      fork do
+      @pid = fork do
+        @blackboard = Rinda::TupleSpace.new
+        DRb.start_service(url, @blackboard)
         @blackboard.read [:quit]
       end
+    end
+    
+    def stop!
+      DRb.start_service
+      DRbObject.new_with_uri(url).write [:quit]
+    rescue Exception
+      # It's expected that this will throw.
     end
     
   end
