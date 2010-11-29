@@ -32,6 +32,10 @@ describe 'humboldt server' do
   it "should allow the port to be specified" do
     Humboldt::Server.new(:port => 9090).port.should == 9090
   end
+  
+  it "should generate a URL for the server machine" do
+    Humboldt::Server.new.url.should == "druby://localhost:9001"
+  end
 
 end
 
