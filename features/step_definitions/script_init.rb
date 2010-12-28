@@ -7,6 +7,10 @@ Given /^an? (\w+) script$/ do |type|
   end
 end
 
+Given /^the script$/ do |text|
+  @script_text = text
+end
+
 Given /a running server$/ do
   @server = Humboldt::Server.new
   @server.start!

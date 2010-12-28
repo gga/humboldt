@@ -8,3 +8,18 @@ Feature: Simple scripts
   When  the script is executed
   And   results are gathered
   Then  nothing is reported
+  
+  Scenario: Simple script
+  Given the script
+    """
+    script do |s|
+      s.user :fact do
+        def fact(i) ; i == 1 ? i : i * fact(i - 1) ; end
+        fact(50)
+      end
+    end
+    """
+  And   a running server
+  When  the script is executed
+  And   results are gathered
+  Then  nothing is reported
