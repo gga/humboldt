@@ -1,5 +1,4 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "rake"
-gem "rspec"
-gem "cucumber"
+# Specify your gem's dependencies in ..gemspec
+gemspec

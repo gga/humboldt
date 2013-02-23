@@ -1,9 +1,4 @@
-$: << File.dirname(__FILE__) + '/../../lib'
-
-require 'server'
-require 'script'
-require 'report'
-require 'repository'
+require_relative '../../lib/humboldt'
 
 After do |scenario|
   @server.stop! if @server
