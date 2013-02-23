@@ -25,8 +25,15 @@ module Humboldt
     def stop!
       DRb.start_service
       DRbObject.new_with_uri(url).write [:quit]
+      join @pid
+      @pid = nil
     rescue Exception
       # It's expected that this will throw.
+      @pid = nil
+    end
+
+    def running?
+      @pid != nil
     end
     
   end

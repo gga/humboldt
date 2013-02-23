@@ -1,22 +1,18 @@
-require 'src/report'
+require_relative 'spec_helper'
 
 describe Humboldt::Report do
-  
-  before(:each) do
-    @script = double('script')
-    @server = double('server')
-  end
+  let(:script) { double('script') }
+  let(:server) { double('server') }
+  subject { Humboldt::Report.new(script) }
 
   it "should have no results when first created" do
-    @it = Humboldt::Report.new(@script)
-    @it.results.should be_empty
+    subject.results.should be_empty
   end
   
   it "should gather no results for a script with no users" do
-    @it = Humboldt::Report.new(@script)
-    @script.should_receive(:users).and_return([])
-    @it.gather(@server)
-    @it.results.should be_empty
+    script.should_receive(:users).and_return([])
+    subject.gather(server)
+    subject.results.should be_empty
   end
 
 end

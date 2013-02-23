@@ -1,17 +1,6 @@
-require 'src/server.rb'
 require 'rinda/tuplespace'
 
-RSpec::Matchers.define :be_running do
-  match do |actual|
-    client = DRbObject.new_with_uri(actual.url)
-    begin
-      client.write [:test]
-      true
-    rescue Exception => e
-      false
-    end
-  end
-end
+require_relative 'spec_helper'
 
 describe 'humboldt server' do
   
@@ -40,15 +29,15 @@ describe 'humboldt server' do
 end
 
 describe 'humboldt server stop' do
-  
+  subject { Humboldt::Server.new }
+
   before(:each) do
-    @it = Humboldt::Server.new
-    @it.start!
+    subject.start!
   end
   
   it "should operate on demand" do
-    @it.stop!
-    @it.should_not be_running
+    subject.stop!
+    subject.should_not be_running
   end
 
 end

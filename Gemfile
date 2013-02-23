@@ -1,6 +1,5 @@
-source :rubyforge
-source "http://gems.github.com"
+source "https://rubygems.org"
 
-gem "rake", "0.8.7"
-gem "rspec", "2.0.1"
-gem "cucumber", "0.10.0"
+gem "rake"
+gem "rspec"
+gem "cucumber"

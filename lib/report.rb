@@ -9,7 +9,7 @@ module Humboldt
     end
     
     def gather(source)
-      @script.users.each do |user_name|
+      @script.users.each do |user|
       end
     end
   end
